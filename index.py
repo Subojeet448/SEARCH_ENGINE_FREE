@@ -1,4 +1,4 @@
-"""
+7"""
 UltraSearch Backend — 8 Search Methods, No API Key Required
 =============================================================
 1. DuckDuckGo HTML scrape
@@ -395,20 +395,4 @@ async def wiki_summary(q: str = Query(...)):
         return JSONResponse({"error": str(e)}, status_code=500)
 
 
-# ── HEALTH ───────────────────────────────────────────────────────────────────
-@app.get("/api/health")
-async def health():
-    return {
-        "status": "ok",
-        "version": "2.0",
-        "engines": ["DuckDuckGo", "Bing", "Yahoo", "Google", "Wikipedia", "RSS", "DirectScrape"],
-        "api_keys_needed": False
-    }
-
-
-# ── SERVE FRONTEND ───────────────────────────────────────────────────────────
-@app.get("/", response_class=HTMLResponse)
-async def frontend():
-    path = os.path.join(os.path.dirname(__file__), "..", "static", "index.html")
-    with open(path) as f:
-        return f.read()
+# 
